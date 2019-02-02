@@ -98,6 +98,32 @@
             ]
         },
         {
+            "name": "desktop-resources",
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "net.sourceforge.sc2.TheUrQuanMasters.128x128.png"
+                },
+                {
+                    "type": "file",
+                    "path": "net.sourceforge.sc2.TheUrQuanMasters.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "net.sourceforge.sc2.TheUrQuanMasters.appdata.xml"
+                }
+            ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/share/icons/hicolor/128x128/apps",
+                "cp net.sourceforge.sc2.TheUrQuanMasters.128x128.png /app/share/icons/hicolor/128x128/apps/net.sourceforge.sc2.TheUrQuanMasters.png",
+                "mkdir -p /app/share/applications",
+                "cp net.sourceforge.sc2.TheUrQuanMasters.desktop /app/share/applications",
+                "mkdir -p /app/share/appdata",
+                "cp net.sourceforge.sc2.TheUrQuanMasters.appdata.xml /app/share/appdata"
+            ]
+        },
+        {
             "name": "uqm",
             "sources": [
                     {

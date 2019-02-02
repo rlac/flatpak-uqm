@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>net.sourceforge.sc2.TheUrQuanMasters</id>
+  <name>The Ur-Quan Masters</name>
+  <project_license>GPL-2.0</project_license>
+  <summary>A port of The Ur-Quan Masters using SDL</summary>
+  <metadata_license>GPL-2.0</metadata_license>
+  <url type="homepage">http://sc2.sourceforge.net/</url>
+  <releases>
+    <release version="0.7.0" date="2011-7-4"/>
+  </releases>
+</component>
