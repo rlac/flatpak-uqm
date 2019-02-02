@@ -9,6 +9,7 @@ This is a work in progress. For now you'll need to build the package yourself.
 Building & installing the flatpak locally is simple - ensure flatpak-builder is installed on your system then run:
 
 ```bash
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak-builder --install builddir net.sourceforge.sc2.TheUrQuanMasters.json --force-clean
 ```
 

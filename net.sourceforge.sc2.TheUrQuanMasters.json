@@ -5,12 +5,18 @@
     "sdk": "org.freedesktop.Sdk",
     "command": "uqm",
     "finish-args": [
+        "--share=network",
         "--socket=x11",
         "--device=dri",
         "--share=ipc",
         "--socket=pulseaudio",
+        "--device=all",
         "--persist=.uqm"
     ],
+    "build-options": {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g"
+    },
     "cleanup": [
     ],
     "modules": [
@@ -30,12 +36,16 @@
         },
         {
             "name": "libmikmod",
+            "config-opts": ["--disable-static"],
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://sourceforge.net/projects/mikmod/files/libmikmod/3.3.11.1/libmikmod-3.3.11.1.tar.gz",
                     "sha256": "ad9d64dfc8f83684876419ea7cd4ff4a41d8bcd8c23ef37ecb3a200a16b46d19"
                 }
+            ],
+            "cleanup": [
+                "/bin", "/share/man", "/share/info", "/share/aclocal", "/include", "/lib/*.la", "/lib/*.a", "/lib/pkgconfig"
             ]
         },
         {
@@ -88,62 +98,6 @@
             ]
         },
         {
-            "name": "uqm-content",
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "http://prdownloads.sourceforge.net/sc2/uqm-0.7.0-content.uqm?download",
-                    "sha256": "b8f6db8ba29f0628fb1d5c233830896b19f441aee3744bda671ea264b44da3bf",
-                    "dest-filename": "uqm-0.7.0-content.uqm"
-                },
-                {
-                    "type": "file",
-                    "url": "http://prdownloads.sourceforge.net/sc2/uqm-0.7.0-voice.uqm?download",
-                    "sha256": "bcccf801b4ba37594ff6217b292744ea586ee2d447e927804842ccae8b73c979",
-                    "dest-filename": "uqm-0.7.0-voice.uqm"
-                },
-                {
-                    "type": "file",
-                    "url": "http://prdownloads.sourceforge.net/sc2/uqm-0.7.0-3domusic.uqm?download",
-                    "sha256": "c57085e64dad4bddf8a679a9aa2adf63f2156d5f6cbabe63af80519033dbcb82",
-                    "dest-filename": "uqm-0.7.0-3domusic.uqm"
-                },
-                {
-                    "type": "file",
-                    "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc1.uqm?download",
-                    "sha256": "b697694745d939311e8ebffdd5edf692e010c25d7966e1481074940a4d0487e8",
-                    "dest-filename": "uqm-remix-disc1.uqm"
-                },
-                {
-                    "type": "file",
-                    "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc2.uqm?download",
-                    "sha256": "7fbb4744102e31273e4459b01a156da052ec537c128fe91793643e348bc1bade",
-                    "dest-filename": "uqm-remix-disc2.uqm"
-                },
-                {
-                    "type": "file",
-                    "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc3.uqm?download",
-                    "sha256": "e6d89f8f66cf1df1cb278fca1e92261b1776ee670dff26132e33f14dbd31e91d",
-                    "dest-filename": "uqm-remix-disc3.uqm"
-                },
-                {
-                    "type": "file",
-                    "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc4.uqm?download",
-                    "sha256": "a4c8197712a5b72a81c7ef7a2a33ea7d3ac90ab063c929dd68e7328a559a86d0",
-                    "dest-filename": "uqm-remix-disc4.uqm"
-                }
-            ],
-            "buildsystem": "simple",
-            "build-commands": [
-                "mkdir -p /app/share/uqm/content/packages",
-                "cp uqm-0.7.0-content.uqm /app/share/uqm/content/packages",
-                "mkdir -p /app/share/uqm/content/addons",
-                "cp uqm-0.7.0-3domusic.uqm /app/share/uqm/content/addons",
-                "cp uqm-0.7.0-voice.uqm /app/share/uqm/content/addons",
-                "cp uqm-remix*.uqm /app/share/uqm/content/addons"
-            ]
-        },
-        {
             "name": "uqm",
             "sources": [
                     {
@@ -151,6 +105,48 @@
                         "url": "http://prdownloads.sourceforge.net/sc2/uqm-0.7.0-1-source.tgz?download",
                         "sha256": "136015af296b03e45a47cd19e6c4815de118c26e56548dc75d182f8d8bd028e7",
                         "dest-filename": "uqm-0.7.0-1-source.tgz"
+                    },
+                    {
+                        "type": "file",
+                        "url": "http://prdownloads.sourceforge.net/sc2/uqm-0.7.0-content.uqm?download",
+                        "sha256": "b8f6db8ba29f0628fb1d5c233830896b19f441aee3744bda671ea264b44da3bf",
+                        "dest-filename": "uqm-0.7.0-content.uqm"
+                    },
+                    {
+                        "type": "file",
+                        "url": "http://prdownloads.sourceforge.net/sc2/uqm-0.7.0-voice.uqm?download",
+                        "sha256": "bcccf801b4ba37594ff6217b292744ea586ee2d447e927804842ccae8b73c979",
+                        "dest-filename": "uqm-0.7.0-voice.uqm"
+                    },
+                    {
+                        "type": "file",
+                        "url": "http://prdownloads.sourceforge.net/sc2/uqm-0.7.0-3domusic.uqm?download",
+                        "sha256": "c57085e64dad4bddf8a679a9aa2adf63f2156d5f6cbabe63af80519033dbcb82",
+                        "dest-filename": "uqm-0.7.0-3domusic.uqm"
+                    },
+                    {
+                        "type": "file",
+                        "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc1.uqm?download",
+                        "sha256": "b697694745d939311e8ebffdd5edf692e010c25d7966e1481074940a4d0487e8",
+                        "dest-filename": "uqm-remix-disc1.uqm"
+                    },
+                    {
+                        "type": "file",
+                        "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc2.uqm?download",
+                        "sha256": "7fbb4744102e31273e4459b01a156da052ec537c128fe91793643e348bc1bade",
+                        "dest-filename": "uqm-remix-disc2.uqm"
+                    },
+                    {
+                        "type": "file",
+                        "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc3.uqm?download",
+                        "sha256": "e6d89f8f66cf1df1cb278fca1e92261b1776ee670dff26132e33f14dbd31e91d",
+                        "dest-filename": "uqm-remix-disc3.uqm"
+                    },
+                    {
+                        "type": "file",
+                        "url": "http://prdownloads.sourceforge.net/sc2/uqm-remix-disc4.uqm?download",
+                        "sha256": "a4c8197712a5b72a81c7ef7a2a33ea7d3ac90ab063c929dd68e7328a559a86d0",
+                        "dest-filename": "uqm-remix-disc4.uqm"
                     }
             ],
             "build-options": {
@@ -164,7 +160,13 @@
             "buildsystem": "simple",
             "build-commands": [
                 "./build.sh uqm",
-                "./build.sh uqm install"
+                "./build.sh uqm install",
+                "mkdir -p /app/share/uqm/content/packages",
+                "cp uqm-0.7.0-content.uqm /app/share/uqm/content/packages",
+                "mkdir -p /app/share/uqm/content/addons",
+                "cp uqm-0.7.0-3domusic.uqm /app/share/uqm/content/addons",
+                "cp uqm-0.7.0-voice.uqm /app/share/uqm/content/addons",
+                "cp uqm-remix*.uqm /app/share/uqm/content/addons"
             ]
         }
     ]
