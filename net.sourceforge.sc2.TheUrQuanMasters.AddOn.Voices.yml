@@ -1,0 +1,18 @@
+id: net.sourceforge.sc2.TheUrQuanMasters.AddOn.Voices
+branch: '0.8'
+runtime: net.sourceforge.sc2.TheUrQuanMasters
+runtime-version: stable
+sdk: org.freedesktop.Sdk//20.08
+build-extension: true
+separate-locates: false
+appstream-compose: false
+modules:
+  - name: voice
+    sources:
+      - type: file
+        url: http://prdownloads.sourceforge.net/sc2/uqm-0.8.0-voice.uqm?download
+        sha256: 9edbf51d77d8b533399c5f3afb549314a8210d7aab71ca2c51b4f24832337a45
+        dest-filename: uqm-0.8.0-voice.uqm
+    buildsystem: simple
+    build-commands:
+    - install -Dm444 uqm-0.8.0-voice.uqm ${FLATPAK_DEST}/content/uqm-0.8.0-voice.uqm

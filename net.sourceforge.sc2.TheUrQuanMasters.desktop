@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=The Ur-Quan Masters
-Exec=uqm
+Exec=launch.sh
 Type=Application
 Icon=net.sourceforge.sc2.TheUrQuanMasters
 Categories=Game;

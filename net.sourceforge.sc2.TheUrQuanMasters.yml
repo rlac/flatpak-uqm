@@ -1,0 +1,64 @@
+app-id: net.sourceforge.sc2.TheUrQuanMasters
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+branch: stable
+command: launch.sh
+add-extensions:
+  net.sourceforge.sc2.TheUrQuanMasters.AddOn:
+    version: '0.8'
+    directory: extensions/addon
+    subdirectories: true
+    merge-dirs: content
+    autodelete: true
+    no-autodownload: true
+finish-args:
+  # X11
+  - --share=ipc
+  - --socket=x11
+  # Audio
+  - --socket=pulseaudio
+  # OpenGL
+  - --device=dri
+  # Multiplayer
+  - --share=network
+  # Save games and settings
+  - --persist=.uqm
+  # Gamepads
+  - --device=all
+modules:
+  - name: uqm
+    buildsystem: simple
+    builddir: true
+    build-options:
+      env:
+        INPUT_install_prefix_VALUE: '/app'
+        INPUT_install_bindir_VALUE: '/app/bin'
+        INPUT_install_libdir_VALUE: '/app/lib'
+        INPUT_install_sharedir_VALUE: '/app/share'
+    sources:
+      - type: archive
+        url: http://prdownloads.sourceforge.net/sc2/uqm-0.8.0-src.tgz?download
+        sha256: 24f2f7db9cf7faf53b95f9e2580e6f596205a98ed0c335cfe834c64785ad4f5a
+        dest-filename: uqm-0.8.0-src.tgz
+      - type: file
+        url: http://prdownloads.sourceforge.net/sc2/uqm-0.8.0-content.uqm?download
+        sha256: 77d75ac25e6fb755a33c4ba3b38a7b7bc41fcbc02896891b0cc9ac9214b72eef
+        dest-filename: uqm-0.8.0-content.uqm
+      - type: file
+        path: net.sourceforge.sc2.TheUrQuanMasters.128x128.png
+      - type: file
+        path: net.sourceforge.sc2.TheUrQuanMasters.desktop
+      - type: file
+        path: net.sourceforge.sc2.TheUrQuanMasters.appdata.xml
+      - type: file
+        path: launch.sh
+    build-commands:
+      - ./build.sh uqm
+      - ./build.sh uqm install
+      - mkdir -p /app/extensions/addon
+      - install -Dm544 launch.sh /app/bin/launch.sh
+      - install -Dm444 uqm-0.8.0-content.uqm /app/share/uqm/content/packages/uqm-0.8.0-content.uqm
+      - install -Dm444 net.sourceforge.sc2.TheUrQuanMasters.128x128.png /app/share/icons/hicolor/128x128/apps/net.sourceforge.sc2.TheUrQuanMasters.png
+      - install -Dm444 net.sourceforge.sc2.TheUrQuanMasters.desktop /app/share/applications/net.sourceforge.sc2.TheUrQuanMasters.desktop
+      - install -Dm444 net.sourceforge.sc2.TheUrQuanMasters.appdata.xml /app/share/appdata/net.sourceforge.sc2.TheUrQuanMasters.appdata.xml

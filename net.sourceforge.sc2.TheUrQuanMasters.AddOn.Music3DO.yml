@@ -1,0 +1,18 @@
+id: net.sourceforge.sc2.TheUrQuanMasters.AddOn.Music3DO
+branch: '0.8'
+runtime: net.sourceforge.sc2.TheUrQuanMasters
+runtime-version: stable
+sdk: org.freedesktop.Sdk//20.08
+build-extension: true
+separate-locates: false
+appstream-compose: false
+modules:
+  - name: voice
+    sources:
+      - type: file
+        url: http://prdownloads.sourceforge.net/sc2/uqm-0.8.0-3domusic.uqm?download
+        sha256: 44cd3cec7e9569b4117adb4d77f1522890972566267391ae09631485d231d8b9
+        dest-filename: uqm-0.8.0-3domusic.uqm
+    buildsystem: simple
+    build-commands:
+    - install -Dm444 uqm-0.8.0-3domusic.uqm ${FLATPAK_DEST}/content/uqm-0.8.0-3domusic.uqm
