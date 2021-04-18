@@ -1,2 +1,2 @@
 #/bin/sh
-uqm --addondir=/app/extensions/addon/content
+uqm --addondir=/app/addons/content

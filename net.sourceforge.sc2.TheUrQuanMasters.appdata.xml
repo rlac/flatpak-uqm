@@ -3,10 +3,10 @@
   <id>net.sourceforge.sc2.TheUrQuanMasters</id>
   <name>The Ur-Quan Masters</name>
   <project_license>GPL-2.0</project_license>
-  <summary>A port of The Ur-Quan Masters using SDL</summary>
+  <summary>An action adventure science-fiction game</summary>
   <description>
     <p>
-      Multi-platform Open Source port of the classic sci-fi game Star Control 2, based on the original source code of the 3DO version.
+      The Ur-Quan Masters is a multi-platform open source port of the classic sci-fi game Star Control 2, based on the original source code of the 3DO version.
     </p>
   </description>
   <metadata_license>GPL-2.0</metadata_license>

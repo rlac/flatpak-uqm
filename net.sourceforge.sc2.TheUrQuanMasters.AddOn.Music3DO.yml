@@ -7,7 +7,7 @@ build-extension: true
 separate-locates: false
 appstream-compose: false
 modules:
-  - name: voice
+  - name: music
     sources:
       - type: file
         url: http://prdownloads.sourceforge.net/sc2/uqm-0.8.0-3domusic.uqm?download
