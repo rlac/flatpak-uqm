@@ -6,20 +6,21 @@ A [Flatpak](https://flatpak.org/) build of [The Ur-Quan Masters](http://sc2.sour
 
 For now you'll need to build the package yourself.
 
-Building & installing the flatpak locally is simple - ensure flatpak-builder is installed on your system then run:
+You only need Flatpak installed to build & run locally:
 
 ```bash
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.freedesktop.Platform//20.08
-flatpak install flathub org.freedesktop.Sdk//20.08
-flatpak-builder --install --user uqm net.sourceforge.sc2.TheUrQuanMasters.yml --force-clean
+flatpak install flathub org.freedesktop.Platform//23.08
+flatpak install flathub org.freedesktop.Sdk//23.08
+flatpak install flathub org.flatpak.Builder
+flatpak run org.flatpak.Builder --install --user uqm net.sourceforge.sc2.TheUrQuanMasters.yml --force-clean
 ```
 
 If you want the voice audio or 3DO music addons, run the following:
 
 ```bash
-flatpak-builder --install --user uqm net.sourceforge.sc2.TheUrQuanMasters.AddOn.Voices.yml --force-clean
-flatpak-builder --install --user uqm net.sourceforge.sc2.TheUrQuanMasters.AddOn.Music3DO.yml --force-clean
+flatpak run org.flatpak.Builder --install --user uqm net.sourceforge.sc2.TheUrQuanMasters.AddOn.Voices.yml --force-clean
+flatpak run org.flatpak.Builder --install --user uqm net.sourceforge.sc2.TheUrQuanMasters.AddOn.Music3DO.yml --force-clean
 ```
 
 After installation, the 'uqm' and '.flatpak-builder' directories can be deleted.

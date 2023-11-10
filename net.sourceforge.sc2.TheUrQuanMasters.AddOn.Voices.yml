@@ -2,7 +2,7 @@ id: net.sourceforge.sc2.TheUrQuanMasters.AddOn.Voices
 branch: '0.8'
 runtime: net.sourceforge.sc2.TheUrQuanMasters
 runtime-version: stable
-sdk: org.freedesktop.Sdk//20.08
+sdk: org.freedesktop.Sdk//23.08
 build-extension: true
 separate-locates: false
 appstream-compose: false
